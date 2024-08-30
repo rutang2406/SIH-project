@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mythology & Folklore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Mythology & Folklore</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="heritage.html">Heritage Walks & Virtual Tours</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="story-section">
+            <h2>Ancient Indian Myths and Legends</h2>
+            <article>
+                <h3>The Ramayana</h3>
+                <p>The epic tale of Lord Rama, his devoted wife Sita, and his loyal brother Lakshmana. The story highlights the triumph of good over evil.</p>
+                <button onclick="playAudio('ramayana-audio')">Listen to the Story</button>
+                <audio id="ramayana-audio" src="assets/audio/ramayana.mp3"></audio>
+            </article>
+
+            <article>
+                <h3>The Mahabharata</h3>
+                <p>The grand epic of the Kurukshetra war, featuring the Pandavas, the Kauravas, and the wisdom of Lord Krishna.</p>
+                <button onclick="playAudio('mahabharata-audio')">Listen to the Story</button>
+                <audio id="mahabharata-audio" src="assets/audio/mahabharata.mp3"></audio>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mythology & Folklore. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

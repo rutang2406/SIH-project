@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Walks & Virtual Tours</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <h1>Heritage Walks & Virtual Tours</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mythology.html">Mythology & Folklore</a></li>
+                <li><a href="festivals.html">Festivals</a></li>
+                <li><a href="handicrafts.html">Handicrafts</a></li>
+                <li><a href="music.html">Music & Dance</a></li>
+                <li><a href="recipes.html">Culinary Heritage</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="tour-section">
+            <h2>Explore India's Rich Cultural Heritage</h2>
+            <div id="map" style="height: 500px;"></div>
+            <p>Take a virtual tour of India’s most famous heritage sites. Click on the markers to learn more about each location.</p>
+
+            <!-- Location Information Section -->
+            <div id="location-info" class="location-info">
+                <h3 id="location-title">Select a location on the map to learn more</h3>
+                <img id="location-image" src="" alt="Location Image" style="display:none;">
+                <p id="location-description">Click on a marker to see the details of that location here.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Heritage Walks & Virtual Tours. All rights reserved.</p>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([20.5937, 78.9629], 5); // Center of India
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Heritage sites data
+        var heritageSites = [
+            {
+                title: 'Taj Mahal',
+                lat: 27.1751,
+                lon: 78.0421,
+                image: 'images/taj-mahal.jpeg',
+                description: 'The Taj Mahal, located in Agra, Uttar Pradesh, is one of the most famous monuments in the world, known for its stunning architecture and the story of love behind its creation.'
+            },
+            {
+                title: 'Qutub Minar',
+                lat: 28.5245,
+                lon: 77.1855,
+                image: 'images/qutub-minar.webp',
+                description: 'Qutub Minar is a towering minaret in Delhi, built in the early 13th century. It is a UNESCO World Heritage site and an excellent example of Indo-Islamic architecture.'
+            },
+            {
+                title: 'Humayun\'s Tomb',
+                lat: 28.5933,
+                lon: 77.2507,
+                image: 'images/humayun-tomb.jpg',
+                description: 'Humayun\'s Tomb, located in Delhi, is the tomb of the Mughal Emperor Humayun. It was the first garden-tomb on the Indian subcontinent and a UNESCO World Heritage site.'
+            },
+            {
+                title: 'Red Fort',
+                lat: 28.6562,
+                lon: 77.2410,
+                image: 'images/red-fort.jpg',
+                description: 'The Red Fort in Delhi is a historic fortification and a UNESCO World Heritage site. It was the main residence of the Mughal emperors for nearly 200 years.'
+            },
+            {
+                title: 'Amber Fort',
+                lat: 26.9855,
+                lon: 75.8513,
+                image: 'images/amber-fort.jpg',
+                description: 'Amber Fort is located in Jaipur, Rajasthan, and is known for its artistic Hindu style elements. The fort overlooks Maota Lake and is a major tourist attraction in Jaipur.'
+            }
+        ];
+
+        // Add markers to the map
+        heritageSites.forEach(function(site) {
+            var marker = L.marker([site.lat, site.lon]).addTo(map)
+                .bindPopup('<b>' + site.title + '</b><br>' + site.description);
+
+            marker.on('click', function() {
+                document.getElementById('location-title').textContent = site.title;
+                document.getElementById('location-image').src = site.image;
+                document.getElementById('location-image').style.display = 'block';
+                document.getElementById('location-description').textContent = site.description;
+            });
+        });
+    </script>
+</body>
+</html>
